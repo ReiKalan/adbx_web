@@ -1,0 +1,95 @@
+<$mt:Include module="config" strip_linefeeds="1"$>
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+
+<html lang="<$mt:PublishCharset$>">
+  <head>
+    <$mt:Include module="head_info"$>
+    <title><$mt:PageTitle encode_html="1"$> <mt:If tag="pagefolder">| <mt:PageFolder><$mt:FolderLabel encode_html="1"$></mt:PageFolder> </mt:If>| <$mt:BlogName encode_html="1"$></title>
+    <meta name="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+    <meta name="keywords" content="<$mt:GetVar name="meta_keywords"$>">
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
+    <meta property="og:title" content="<$mt:PageTitle encode_html="1"$> <mt:If tag="pagefolder">| <mt:PageFolder><$mt:FolderLabel encode_html="1"$></mt:PageFolder> </mt:If>| <$mt:BlogName encode_html="1"$>">
+    <meta property="og:url" content="<$mt:PagePermalink encode_html="1"$>">
+    <meta property="og:description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+    <meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
+    <meta property="og:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@<$mt:Var name='twitter_via'$>">
+    <meta name="twitter:title" content="<$mt:PageTitle encode_html="1"$> <mt:If tag="pagefolder">| <mt:PageFolder><$mt:FolderLabel encode_html="1"$></mt:PageFolder> </mt:If>| <$mt:BlogName encode_html="1"$>">
+    <meta name="twitter:description" content="<$mt:PageExcerpt remove_html="1" encode_html="1"$>">
+    <meta name="twitter:image" content="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+    <!-- Microdata -->
+    <meta itemprop="description" content="<$mt:BlogDescription remove_html="1" encode_html="1"$>">
+    <link itemprop="url" href="<$mt:PagePermalink encode_html="1"$>">
+    <link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+    <$mt:Include module="header-script"$>
+  </head>
+  <body>
+  <div class="layout-transparent mdl-layout mdl-js-layout">
+    <$mt:Include module="header-nav"$>
+    <div class="blog blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+      <main class="mdl-layout__content">
+        <div class="blog__posts mdl-grid">
+          <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__media mdl-color-text--grey-50">
+              <h3><$mt:PageTitle$></h3>
+            </div>
+            <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+              <div class="minilogo"<mt:If tag="AuthorUserpicURL"> style="background-image: url('<$mt:AuthorUserpicURL$>');"</mt:If>></div>
+              <div>
+                <strong><$MTPageAuthorDisplayName$></strong>
+                <span><$mt:PageDate format="%Y-%m-%d"$></span>
+              </div>
+            </div>
+            <div class="mdl-color-text--grey-700 mdl-card__supporting-text entry-content">
+              <$mt:PageBody$>
+              <$mt:PageMore$>
+            </div>
+            <$mt:PageID setvar="parent_page_id"$>
+            <mt:If tag="BlogPageCount" ge="2">
+            <mt:Pages limit="6">
+            <mt:PagesHeader>
+            <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments related-pages">
+              <h4><i class="material-icons">library_books</i> その他のページ</h4>
+              <div class="mdl-color-text--grey-700">
+                <ul>
+            </mt:PagesHeader>
+            <mt:If tag="PageID" ne="$parent_page_id">
+                  <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle encode_html="1"$></a></li>
+            </mt:If>
+            <mt:PagesFooter>
+                </ul>
+              </div>
+            </div>
+            </mt:PagesFooter>
+            </mt:Pages>
+            </mt:If>
+          </div>
+        </div>
+        <$mt:Include module="footer"$>
+      </main>
+      <div class="mdl-layout__obfuscator"></div>
+    </div>
+  </div>
+    <$mt:Include module="footer-script"$>
+  </body>
+</html>

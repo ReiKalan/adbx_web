@@ -1,0 +1,124 @@
+<$mt:Include module="config" strip_linefeeds="1"$>
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+
+<html lang="<$mt:PublishCharset$>">
+  <head>
+    <$mt:Include module="head_info"$>
+    <title><$mt:EntryTitle encode_html="1"$> | <$mt:BlogName encode_html="1"$></title>
+    <meta name="description" content="<$mt:EntryExcerpt$>">
+    <meta name="keywords" content="<$mt:GetVar name="meta_keywords"$><$mt:EntryKeywords$>">
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
+    <meta property="og:title" content="<$mt:EntryTitle encode_html="1"$> | <$mt:BlogName encode_html="1"$>">
+    <meta property="og:url" content="<$mt:EntryPermalink encode_html="1"$>">
+    <meta property="og:description" content="<$mt:EntryExcerpt$>">
+    <meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
+    <meta property="og:image" content="<mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@<$mt:Var name='twitter_via'$>">
+    <meta name="twitter:title" content="<$mt:EntryTitle encode_html="1"$>">
+    <meta name="twitter:description" content="<$mt:EntryExcerpt remove_html="1" encode_html="1" words="100"$>">
+    <meta name="twitter:image" content="<mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets>">
+    <!-- Microdata -->
+    <meta itemprop="description" content="<$mt:EntryExcerpt$>">
+    <link itemprop="url" href="<$mt:EntryPermalink encode_html="1"$>">
+    <link itemprop="image" href="<mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$></mt:EntryAssets>">
+    <$mt:Include module="header-script"$>
+  </head>
+  <body>
+  <div class="layout-transparent mdl-layout mdl-js-layout">
+    <$mt:Include module="header-nav"$>
+    <div class="blog blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+      <main class="mdl-layout__content">
+        <div class="blog__posts mdl-grid">
+          <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__media mdl-color-text--grey-50"<mt:EntryAssets type="image" sort_order="ascend" limit="1"> style="background-image: url('<$mt:AssetThumbnailURL width="800"$>');"</mt:EntryAssets>>
+              <h3><$mt:EntryTitle$></h3>
+            </div>
+            <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+              <div class="minilogo"<mt:If tag="AuthorUserpicURL"> style="background-image: url('<$mt:AuthorUserpicURL$>');"</mt:If>></div>
+              <div>
+                <strong><$mt:EntryAuthorDisplayName$></strong>
+                <span><$mt:EntryDate format="%Y-%m-%d"$></span>
+              </div>
+              <mt:EntryIfCategory>
+              <div class="section-spacer"></div>
+              <div class="main-cat"><i class="material-icons">tab</i><mt:EntryCategories type="primary"><a class="mdl-navigation__link" href="<$mt:CategoryArchiveLink encode_html="1"$>"><$mt:CategoryLabel$></a></mt:EntryCategories></div>
+              </mt:EntryIfCategory>
+            </div>
+            <div class="mdl-color-text--grey-700 mdl-card__supporting-text entry-content">
+              <$mt:EntryBody$>
+              <$mt:EntryMore$>
+              <div id="entry-social-buttons">
+                <$mt:Include module="social-button"$>
+              </div>
+            </div>
+            <mt:EntryPrimaryCategory>
+            <mt:If tag="CategoryCount" ge="2">
+            <mt:Ignore>exclude current entry</mt:Ignore>
+            <$mt:EntryID setvar="id"$>
+            <mt:Entries limit="6">
+            <mt:EntriesHeader>
+            <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments related-pages">
+              <h4><i class="material-icons">library_books</i> <$mt:CategoryLabel$> カテゴリの記事</h4>
+              <div class="mdl-color-text--grey-700">
+                <ul>
+            </mt:EntriesHeader>
+                  <mt:If tag="entryid" ne="$id">
+                  <li><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle encode_html="1"$></a></li>
+                  </mt:If>
+            <mt:EntriesFooter>
+                </ul>
+              </div>
+            </div>
+            </mt:EntriesFooter>
+            </mt:Entries>
+            </mt:If>
+            </mt:EntryPrimaryCategory>
+          </div>
+          <nav class="nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+          <mt:EntryNext>
+            <a href="<$mt:EntryPermalink encode_html="1"$>" class="nav__button" title="<$mt:EntryTitle encode_html="1"$>">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900">
+                <i class="material-icons">arrow_back</i>
+              </button>
+              前の記事
+            </a>
+          </mt:EntryNext>
+          <mt:EntryPrevious>
+            <div class="section-spacer"></div>
+            <a href="<$mt:EntryPermalink$>" class="nav__button" title="<$mt:EntryTitle encode_html="1"$>">
+              次の記事
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </a>
+          </mt:EntryPrevious>
+          </nav>
+        </div>
+        <$mt:Include module="footer"$>
+      </main>
+      <div class="mdl-layout__obfuscator"></div>
+    </div>
+  </div>
+    <$mt:Include module="footer-script"$>
+  </body>
+</html>

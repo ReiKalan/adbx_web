@@ -1,0 +1,41 @@
+         <mt:Entries paginate_by="$paginate">
+          <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__media mdl-list-image mdl-color-text--grey-50"<mt:EntryAssets type="image" sort_order="ascend" limit="1"> style="background-image: url('<$mt:AssetThumbnailURL width="640"$>');"</mt:EntryAssets>>
+              <h3><a href="<$mt:EntryPermalink$>"><$mt:EntryTitle$></a></h3>
+            </div>
+            <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
+              <$mt:EntryExcerpt words="80"$>
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+              <div class="minilogo"<mt:If tag="AuthorUserpicURL"> style="background-image: url('<$mt:AuthorUserpicURL$>');"</mt:If>></div>
+              <div>
+                <strong><$mt:EntryAuthorDisplayName$></strong>
+                <span><$mt:EntryDate format="%Y-%m-%d"$></span>
+              </div>
+              <mt:EntryIfCategory>
+              <div class="section-spacer"></div>
+              <div class="main-cat"><i class="material-icons">tab</i><mt:EntryCategories type="primary"><a class="mdl-navigation__link" href="<$mt:CategoryArchiveLink encode_html="1"$>"><$mt:CategoryLabel$></a></mt:EntryCategories></div></mt:EntryIfCategory>
+            </div>
+          </div>
+          <mt:EntriesFooter>
+          <nav class="nav mdl-cell mdl-cell--12-col">
+          <mt:PaginationHasPrevious>
+            <a href="<$mt:PaginationPreviousURL$>" class="nav__button">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900">
+                <i class="material-icons">arrow_back</i>
+              </button>
+              前の<$mt:GetVar name="paginate"$>件
+            </a>
+          </mt:PaginationHasPrevious>
+          <mt:PaginationHasNext>
+            <div class="section-spacer"></div>
+            <a href="<$mt:PaginationNextURL$>" class="nav__button">
+              次の<$mt:GetVar name="paginate"$>件
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </a>
+          </mt:PaginationHasNext>
+          </nav>
+          </mt:EntriesFooter>
+          </mt:Entries>
