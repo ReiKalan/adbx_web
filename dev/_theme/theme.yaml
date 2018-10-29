@@ -270,6 +270,9 @@ elements:
           footer_script:
             filename: footer_script.mtml
             label: footer-script
+          common_stylesheet:
+            filename: common_stylesheet.mtml
+            label: common_stylesheet
           head_info:
             filename: head_info.mtml
             label: head_info
