@@ -1,9 +1,9 @@
-id: "test"
-label: "test"
+id: "anm"
+label: "anm"
 version: "1.0.0"
 author_link: "https://adbx.app/"
 author_name: "adbx"
-description: "test"
+description: "anm"
 class: "blog"
 elements:
   blog_static_files:
@@ -187,25 +187,75 @@ elements:
   field_display_options:
     component: ~
     data:
-      blog: {}
-
+      blog:
+        field.banner_image01:
+          display: default
+          order: 4
+        field.banner_image02:
+          display: default
+          order: 6
+        field.banner_image03:
+          display: default
+          order: 8
+        field.banner_url01:
+          display: default
+          order: 5
+        field.banner_url02:
+          display: default
+          order: 7
+        field.banner_url03:
+          display: default
+          order: 9
+        field.slide_images01:
+          display: default
+          order: 0
+        field.slide_images02:
+          display: default
+          order: 1
+        field.slide_images03:
+          display: default
+          order: 2
+        field.slide_images04:
+          display: default
+          order: 3
       page:
         excerpt:
           display: default
+          order: 5
+        field.catalog_pages:
+          display: default
+          order: 1
+        field.navi_on:
+          display: default
           order: 2
-        keywords:
+        field.page_thumbnail:
+          display: default
+          order: 4
+        field.toppage_link:
           display: default
           order: 3
+        keywords:
+          display: default
+          order: 6
         text:
           display: default
           order: 0
       post:
         excerpt:
           display: default
+          order: 4
+        field.news_oneline:
+          display: default
+          order: 2
+        field.news_thumbnail:
+          display: default
+          order: 3
+        field.pickup:
+          display: default
           order: 1
         keywords:
           display: default
-          order: 2
+          order: 5
         text:
           display: default
           order: 0
@@ -224,24 +274,25 @@ elements:
                 archive_type: Category
                 file_template: "%-c/%i"
                 preferred: 1
-          monthly_entry_listing:
-            filename: monthly_entry_listing.mtml
-            label: 月別ブログ記事リスト
+          yearly_entry_listing:
+            filename: yearly_entry_listing.mtml
+            label: 年別ブログ記事リスト
             mappings:
-              monthly:
-                archive_type: Monthly
-                file_template: "%y/%m/%i"
+              yearly:
+                archive_type: Yearly
+                file_template: "%y/%i"
                 preferred: 1
+                start_month: 1
         index:
-          atom:
-            filename: atom.xml.mtml
-            label: 最新記事のフィード
-            outfile: atom.xml
-            rebuild_me: 1
-          index_page:
+          main_index:
             filename: index.html.mtml
-            label: インデックスページ
+            label: メインページ
             outfile: index.html
+            rebuild_me: 1
+          news:
+            filename: news.html.mtml
+            label: ニュース TOP
+            outfile: news.html
             rebuild_me: 1
           styles:
             filename: styles.css.mtml
@@ -258,45 +309,39 @@ elements:
                 file_template: "%y/%m/%-f"
                 preferred: 1
         module:
-          config:
-            filename: config.mtml
-            label: config
+          catalog-pages:
+            filename: catalog-pages.mtml
+            label: catalog-pages
           common_bottom_js:
             filename: common_bottom_js.mtml
             label: common_bottom_js
           common_stylesheet:
             filename: common_stylesheet.mtml
             label: common_stylesheet
+          config:
+            filename: config.mtml
+            label: config
           entry-list:
             filename: entry-list.mtml
             label: entry-list
           footer:
             filename: footer.mtml
             label: footer
-          footer_script:
-            filename: footer_script.mtml
-            label: footer-script
-          head_info:
-            filename: head_info.mtml
-            label: head_info
-          header_nav:
-            filename: header_nav.mtml
-            label: header-nav
           gototop:
             filename: gototop.mtml
             label: gototop
-          header_script:
-            filename: header_script.mtml
-            label: header-script
-          list_script:
-            filename: list_script.mtml
-            label: list-script
-          social-button:
-            filename: social-button.mtml
-            label: social-button
+          header:
+            filename: header.mtml
+            label: header
+          snsarea:
+            filename: snsarea.mtml
+            label: snsarea
+          social_button:
+            filename: social_button.mtml
+            label: social_button
         page:
-          page:
-            filename: page.mtml
+          webpage:
+            filename: webpage.mtml
             label: ウェブページ
             mappings:
               page:
