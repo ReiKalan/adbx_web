@@ -5,7 +5,7 @@ jQuery(function($) {
 
   $(window).on("scroll", function() {
     var scroll = $document.scrollTop(),
-      isSticky = scroll > 80;
+      isSticky = scroll > 90;
 
     if (lastIsSticky === isSticky) {
       return;
@@ -19,4 +19,10 @@ jQuery(function($) {
       $header.removeClass("sticky")
     }
   });
+  
+  //メニューの高さ分だけ下に下げる
+  $(window).on("resize", function() {
+    var height = $header.outerHeight();
+    $("body").css("margin-top", height);
+  }).triggerHandler("resize");
 });
