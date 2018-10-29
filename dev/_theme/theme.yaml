@@ -261,6 +261,12 @@ elements:
           config:
             filename: config.mtml
             label: config
+          common_bottom_js:
+            filename: common_bottom_js.mtml
+            label: common_bottom_js
+          common_stylesheet:
+            filename: common_stylesheet.mtml
+            label: common_stylesheet
           entry-list:
             filename: entry-list.mtml
             label: entry-list
@@ -270,9 +276,6 @@ elements:
           footer_script:
             filename: footer_script.mtml
             label: footer-script
-          common_stylesheet:
-            filename: common_stylesheet.mtml
-            label: common_stylesheet
           head_info:
             filename: head_info.mtml
             label: head_info
