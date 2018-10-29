@@ -279,6 +279,9 @@ elements:
           header_nav:
             filename: header_nav.mtml
             label: header-nav
+          gototop:
+            filename: gototop.mtml
+            label: gototop
           header_script:
             filename: header_script.mtml
             label: header-script
